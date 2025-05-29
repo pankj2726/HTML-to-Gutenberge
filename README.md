@@ -286,17 +286,14 @@ cp output.json ~/storage/shared/Download/
   - Verify the repository URL is correct.
   - Ensure you have internet access and Git credentials if required.
 
-```
 
-### Changes Made
-- **Added Git Clone Method**: Included `git clone` steps in the Installation section for both Termux and other platforms (Linux/Mac/Windows). Used a placeholder URL (`https://github.com/pankj2726/HTML-to-Gutenberg.git`) since the provided URL seems invalid.
-- **Updated Termux Guide**: Added Git installation (`pkg install git`) and a dedicated `git clone` step in the Beginner Guide for consistency.
-- **Troubleshooting**: Added a note about "Repository not found" errors to address potential issues with cloning.
-- **Kept Everything Else**: Maintained all other sections (Features, Usage, Example, etc.) as previously beautified, ensuring clarity and consistency.
+#### 📣 Contact & Support
 
-### Notes
-- **Repository URL**: The URL `https://github.com/pankj2726/HTML-to-Gutenberge/` seems to have a typo ("Gutenberge"). I used `HTML-to-Gutenberg` as a placeholder. Please provide the correct URL if it exists, and I’ll update the README accordingly.
-- **If No Repo Exists**: If you’re creating a new repository, you can use this README and replace the placeholder URL with your actual repo link (e.g., after pushing to GitHub).
-- **Further Assistance**: If you want me to generate `cli.js` or `package.json` content, analyze a specific repository, or add more details to the README (e.g., license, contributing guidelines), let me know!
+#### 🐙 GitHub: @pankj2726
 
-If this isn’t exactly what you meant or you have the correct repo URL, drop it, and I’ll tailor it further! 😎
+#### 📣 Telegram Channel: PAnksDroid
+
+#### 🐞 Issues: GitHub Issues
+
+
+
