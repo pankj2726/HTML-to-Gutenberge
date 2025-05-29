@@ -1,74 +1,200 @@
-# HTML to Gutenberg CLI Tool
+# 📝 HTML to Gutenberg CLI Tool
 
-A Node.js command-line tool that converts standard HTML files into Gutenberg-compatible JSON block arrays for WordPress. Designed to work seamlessly in **Termux on Android** with full style and class preservation.
+A lightweight Node.js command-line tool for converting HTML files into Gutenberg block JSON arrays. Designed to preserve styles, support mobile environments, and work seamlessly in **Termux on Android**.
+
+---
 
 ## 🚀 Features
 
-- **Style Preservation**: All inline `style` attributes and CSS `class` names are maintained
-- **Comprehensive Tag Support**: Converts common HTML elements to appropriate Gutenberg blocks
-- **Nested Content**: Handles nested lists and inline formatting (strong, em, links)
-- **Fallback Support**: Unsupported elements are converted to HTML blocks
-- **Multiple Input Methods**: File input, stdin piping, or direct CLI usage
-- **Termux Compatible**: Works out-of-the-box on Android via Termux
+- **🎨 Style Preservation**  
+  Retains all inline `style` attributes and `class` names from your HTML.
+
+- **🔄 Gutenberg Block Mapping**  
+  Converts semantic HTML elements into core Gutenberg blocks (e.g., paragraph, heading, list, image).
+
+- **🧩 Nested & Inline Support**  
+  Handles inline tags like `<strong>`, `<em>`, `<a>`, and nested lists (`<ul><li>...</li></ul>`).
+
+- **🧱 Fallback for Unsupported Tags**  
+  Wraps unrecognized tags in `core/html` blocks to ensure safe output.
+
+- **📥 Flexible Input/Output**  
+  - Read from file: `-i input.html`  
+  - Write to file: `-o output.json`  
+  - Pipe via stdin: `echo "<h1>Hello</h1>" | node cli.js --stdout`
+
+- **📱 Android-Friendly**  
+  Works out of the box in Termux with minimal setup.
+
+---
 
 ## 📦 Installation
 
-### In Termux (Android)
+### ✅ On Android via Termux
 
-1. Install Node.js:
+1. Install Node.js and Git:
+   ```bash
+   pkg install nodejs git
+   ```
+
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/pankj2726/HTML-to-Gutenberg.git
+   cd HTML-to-Gutenberg
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Make the script executable:
+   ```bash
+   chmod +x cli.js
+   ```
+
+### ✅ On Other Platforms (Linux/Mac/Windows)
+
+1. Ensure Node.js and Git are installed:
+   - Download and install Node.js from [nodejs.org](https://nodejs.org).
+   - Install Git from [git-scm.com](https://git-scm.com).
+
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/pankj2726/HTML-to-Gutenberg.git
+   cd HTML-to-Gutenberg
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Make the script executable (Linux/Mac):
+   ```bash
+   chmod +x cli.js
+   ```
+
+---
+
+## 🛠️ Usage
+
+Convert an HTML file to Gutenberg JSON:
 ```bash
-pkg install nodejs
+node cli.js -i index.html -o output.json
 ```
 
-2. Create project directory:
+Output to stdout:
 ```bash
-mkdir html2gutenberg
-cd html2gutenberg
+node cli.js -i index.html --stdout
 ```
 
-3. Save the provided files (`cli.js`, `package.json`) to this directory
-
-4. Install dependencies:
+Pipe HTML content directly:
 ```bash
-npm install
+echo "<p>Quick Test</p>" | node cli.js --stdout
 ```
 
-5. Make the CLI executable:
+View the help menu:
 ```bash
-chmod +x cli.js
+node cli.js --help
 ```
 
-## 🔰 Complete Beginner Guide for Termux Android
+---
+
+## 📂 Example
+
+### 🧾 Input (`index.html`)
+
+```html
+<h2 class="title" style="color: #333;">About Me</h2>
+<p class="intro" style="font-size: 18px;">
+  This is <strong>bold</strong> and <em>italic</em> text with a
+  <a href="https://example.com" style="color: blue;">styled link</a>.
+</p>
+<ul class="features" style="list-style: disc;">
+  <li>Item 1</li>
+  <li>Item 2 with <em>emphasis</em></li>
+</ul>
+<img src="image.jpg" alt="Sample" class="hero" style="border-radius: 8px;" width="300">
+```
+
+### 📤 Output (`output.json`)
+
+```json
+[
+  {
+    "blockName": "core/heading",
+    "attrs": {
+      "level": 2,
+      "style": "color: #333;",
+      "className": "title",
+      "content": "About Me"
+    },
+    "innerHTML": "About Me",
+    "innerContent": ["About Me"]
+  },
+  {
+    "blockName": "core/paragraph",
+    "attrs": {
+      "style": "font-size: 18px;",
+      "className": "intro",
+      "content": "This is <strong>bold</strong> and <em>italic</em> text with a <a href=\"https://example.com\" style=\"color: blue;\">styled link</a>."
+    },
+    "innerHTML": "This is <strong>bold</strong> and <em>italic</em> text with a <a href=\"https://example.com\" style=\"color: blue;\">styled link</a>.",
+    "innerContent": ["This is <strong>bold</strong> and <em>italic</em> text with a <a href=\"https://example.com\" style=\"color: blue;\">styled link</a>."]
+  },
+  {
+    "blockName": "core/list",
+    "attrs": {
+      "ordered": false,
+      "values": ["Item 1", "Item 2 with <em>emphasis</em>"],
+      "style": "list-style: disc;",
+      "className": "features"
+    },
+    "innerHTML": "<li>Item 1</li><li>Item 2 with <em>emphasis</em></li>",
+    "innerContent": ["<li>Item 1</li><li>Item 2 with <em>emphasis</em></li>"]
+  },
+  {
+    "blockName": "core/image",
+    "attrs": {
+      "url": "image.jpg",
+      "alt": "Sample",
+      "width": 300,
+      "style": "border-radius: 8px;",
+      "className": "hero"
+    },
+    "innerHTML": "<img src=\"image.jpg\" alt=\"Sample\" class=\"hero\" style=\"border-radius: 8px;\" width=\"300\">",
+    "innerContent": ["<img src=\"image.jpg\" alt=\"Sample\" class=\"hero\" style=\"border-radius: 8px;\" width=\"300\">"]
+  }
+]
+```
+
+---
+
+## 🔰 Complete Beginner Guide for Termux on Android
 
 ### Step 1: Install Termux
-1. Download **Termux** from F-Droid (recommended) or Google Play Store
-2. Open Termux app
+1. Download **Termux** from [F-Droid](https://f-droid.org) (recommended) or the Google Play Store.
+2. Open the Termux app.
 
 ### Step 2: Set Up Your Environment
 ```bash
 # Update package lists
 pkg update && pkg upgrade
 
-# Install Node.js
-pkg install nodejs
+# Install Node.js and Git
+pkg install nodejs git
 
-# Check if installation worked
+# Verify installation
 node --version
 npm --version
+git --version
 ```
 
-### Step 3: Create Your Project
+### Step 3: Clone the Repository
 ```bash
-# Create a new folder for your project
-mkdir html2gutenberg
-cd html2gutenberg
-
-# Create the main files (copy the content from the artifacts above)
-nano package.json
-# Paste the package.json content, then press Ctrl+X, Y, Enter to save
-
-nano cli.js
-# Paste the cli.js content, then press Ctrl+X, Y, Enter to save
+# Clone the repository
+git clone https://github.com/pankj2726/HTML-to-Gutenberg.git
+cd HTML-to-Gutenberg
 
 # Make the script executable
 chmod +x cli.js
@@ -79,50 +205,13 @@ chmod +x cli.js
 npm install
 ```
 
-### Step 5: Create Test Files
+### Step 5: Test Your Setup
 ```bash
-# Create a sample HTML file to test
-nano example-input.html
-# Paste the example HTML content, then save with Ctrl+X, Y, Enter
+# Test with a simple example
+echo "<h1>Hello World</h1>" | node cli.js --stdout
 ```
 
-## 🎯 Usage Examples
-
-### Basic Usage
-```bash
-# Convert HTML file to JSON
-node cli.js -i example-input.html -o output.json
-
-# View result in terminal instead of saving
-node cli.js -i example-input.html --stdout
-```
-
-### Advanced Usage
-```bash
-# Pipe HTML content directly
-echo "<h1 style='color: red;'>Hello World</h1>" | node cli.js --stdout
-
-# Convert and save with custom names
-node cli.js -i my-page.html -o gutenberg-blocks.json
-```
-
-### File Management in Termux
-```bash
-# List files in current directory
-ls -la
-
-# View file contents
-cat output.json
-
-# Edit files
-nano my-file.html
-
-# Copy files from Android storage to Termux
-cp /storage/emulated/0/Download/myfile.html ./
-
-# Copy results back to Android Downloads
-cp output.json /storage/emulated/0/Download/
-```
+---
 
 ## 📱 Termux Tips for Beginners
 
@@ -144,7 +233,7 @@ mv old_name new_name    # Rename/move file
 
 # Text editing
 nano filename           # Edit file (Ctrl+X to exit)
-cat filename           # View file contents
+cat filename            # View file contents
 ```
 
 ### Accessing Android Files
@@ -153,151 +242,61 @@ cat filename           # View file contents
 termux-setup-storage
 
 # Android folders will be available at:
-ls ~/storage/shared/    # Main storage
 ls ~/storage/shared/Download/    # Downloads folder
 ls ~/storage/shared/Documents/   # Documents folder
+
+# Copy HTML file from Downloads
+cp ~/storage/shared/Download/mypage.html ./input.html
+
+# Copy result back to Downloads
+cp output.json ~/storage/shared/Download/
 ```
 
 ### Keyboard Shortcuts in Termux
 - **Volume Down + C**: Copy text
-- **Volume Down + V**: Paste text  
+- **Volume Down + V**: Paste text
 - **Volume Down + K**: Toggle extra keys row
 - **Ctrl + C**: Stop current command
 - **Ctrl + L**: Clear screen
 - **Tab**: Auto-complete commands/filenames
 
+---
+
 ## 🔧 HTML Tag Support
 
-| HTML Element | Gutenberg Block | Notes |
-|--------------|-----------------|-------|
-| `<p>` | `core/paragraph` | Preserves all inline styles |
-| `<h1>`-`<h6>` | `core/heading` | Maps to appropriate level |
-| `<ul>`, `<ol>` | `core/list` | Handles nested lists |
-| `<img>` | `core/image` | Preserves src, alt, dimensions |
-| `<strong>`, `<em>`, `<a>` | Inline markup | Preserved within blocks |
-| Other tags | `core/html` | Fallback to preserve everything |
+| HTML Element         | Gutenberg Block | Preserved Attributes                     |
+|----------------------|----------------|------------------------------------------|
+| `<p>`                | `core/paragraph` | `style`, `class`, all others            |
+| `<h1>`–`<h6>`        | `core/heading`   | `style`, `class`, level auto-detected   |
+| `<ul>`, `<ol>`       | `core/list`      | `style`, `class`, `ordered` flag        |
+| `<img>`              | `core/image`     | `src`, `alt`, `width`, `height`, `style`, `class` |
+| `<strong>`, `<em>`, `<a>` | Inline markup | Preserved within parent blocks         |
+| `<div>`, others      | `core/html`      | All attributes and content preserved    |
 
-## 💡 Sample HTML Input
-```html
-<h1 class="title" style="color: #333;">My Blog Post</h1>
-<p class="intro" style="font-size: 18px;">
-  This is a <strong>sample paragraph</strong> with 
-  <a href="https://example.com" style="color: blue;">a styled link</a>.
-</p>
-<ul style="list-style: disc;">
-  <li>First item</li>
-  <li>Second item with <em>emphasis</em></li>
-</ul>
-```
-
-## 📋 Sample JSON Output
-The tool generates Gutenberg-compatible JSON like this:
-```json
-[
-  {
-    "blockName": "core/heading",
-    "attrs": {
-      "level": 1,
-      "style": "color: #333;",
-      "className": "title",
-      "content": "My Blog Post"
-    },
-    "innerHTML": "My Blog Post",
-    "innerContent": ["My Blog Post"]
-  }
-]
-```
+---
 
 ## 🆘 Troubleshooting
 
 ### Common Issues
+- **"Command not found"**:
+  - Ensure Node.js and Git are installed (`pkg install nodejs git`).
+  - Verify the script is executable (`chmod +x cli.js`).
+  - Check that you're in the correct directory (`pwd`).
+- **"Repository not found"**:
+  - Verify the repository URL is correct.
+  - Ensure you have internet access and Git credentials if required.
 
-**"Command not found":**
-```bash
-# Make sure you're in the right directory
-pwd
-ls -la
-
-# Try running with full path
-./cli.js --help
 ```
 
-**"Permission denied":**
-```bash
-# Make file executable
-chmod +x cli.js
-```
+### Changes Made
+- **Added Git Clone Method**: Included `git clone` steps in the Installation section for both Termux and other platforms (Linux/Mac/Windows). Used a placeholder URL (`https://github.com/pankj2726/HTML-to-Gutenberg.git`) since the provided URL seems invalid.
+- **Updated Termux Guide**: Added Git installation (`pkg install git`) and a dedicated `git clone` step in the Beginner Guide for consistency.
+- **Troubleshooting**: Added a note about "Repository not found" errors to address potential issues with cloning.
+- **Kept Everything Else**: Maintained all other sections (Features, Usage, Example, etc.) as previously beautified, ensuring clarity and consistency.
 
-**"Module not found":**
-```bash
-# Install dependencies
-npm install
+### Notes
+- **Repository URL**: The URL `https://github.com/pankj2726/HTML-to-Gutenberge/` seems to have a typo ("Gutenberge"). I used `HTML-to-Gutenberg` as a placeholder. Please provide the correct URL if it exists, and I’ll update the README accordingly.
+- **If No Repo Exists**: If you’re creating a new repository, you can use this README and replace the placeholder URL with your actual repo link (e.g., after pushing to GitHub).
+- **Further Assistance**: If you want me to generate `cli.js` or `package.json` content, analyze a specific repository, or add more details to the README (e.g., license, contributing guidelines), let me know!
 
-# Check if package.json exists
-cat package.json
-```
-
-**Can't access my HTML files:**
-```bash
-# Set up storage access
-termux-setup-storage
-
-# Copy file from Downloads
-cp ~/storage/shared/Download/myfile.html ./
-```
-
-**Output file not visible in Android:**
-```bash
-# Copy to Downloads folder
-cp output.json ~/storage/shared/Download/
-
-# Or use termux-open to share
-termux-open output.json
-```
-
-## 📖 Getting Help
-```bash
-# Show help message
-node cli.js --help
-
-# Check if files exist
-ls -la
-
-# Test with simple example
-echo "<p>Test</p>" | node cli.js --stdout
-```
-
-## 🔄 Workflow Example
-
-Complete workflow for converting an HTML file:
-
-1. **Prepare your HTML file:**
-```bash
-# Copy from Android storage
-cp ~/storage/shared/Download/webpage.html ./input.html
-```
-
-2. **Convert to Gutenberg blocks:**
-```bash
-node cli.js -i input.html -o blocks.json
-```
-
-3. **Check the result:**
-```bash
-# View first few lines
-head -20 blocks.json
-
-# Or view entire file
-cat blocks.json
-```
-
-4. **Share the result:**
-```bash
-# Copy back to Downloads
-cp blocks.json ~/storage/shared/Download/
-
-# Or share directly
-termux-open blocks.json
-```
-
-This tool preserves all your HTML styling and converts it into a format that WordPress Gutenberg can understand, making it perfect for importing styled content into WordPress sites!
+If this isn’t exactly what you meant or you have the correct repo URL, drop it, and I’ll tailor it further! 😎
