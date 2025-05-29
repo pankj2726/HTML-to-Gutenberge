@@ -39,8 +39,8 @@ A lightweight Node.js command-line tool for converting HTML files into Gutenberg
 
 2. Clone the repository:
    ```bash
-   git clone https://github.com/pankj2726/HTML-to-Gutenberg.git
-   cd HTML-to-Gutenberg
+   git clone https://github.com/pankj2726/HTML-to-Gutenberge
+   cd HTML-to-Gutenberge
    ```
 3. Install dependencies:
    ```bash
@@ -60,8 +60,8 @@ A lightweight Node.js command-line tool for converting HTML files into Gutenberg
 
 2. Clone the repository:
    ```bash
-   git clone https://github.com/pankj2726/HTML-to-Gutenberg.git
-   cd HTML-to-Gutenberg
+   git clone https://github.com/pankj2726/HTML-to-Gutenberge
+   cd HTML-to-Gutenberge
    ```
 
 3. Install dependencies:
@@ -193,8 +193,8 @@ git --version
 ### Step 3: Clone the Repository
 ```bash
 # Clone the repository
-git clone https://github.com/pankj2726/HTML-to-Gutenberg.git
-cd HTML-to-Gutenberg
+git clone https://github.com/pankj2726/HTML-to-Gutenberge
+cd HTML-to-Gutenberge
 
 # Make the script executable
 chmod +x cli.js
