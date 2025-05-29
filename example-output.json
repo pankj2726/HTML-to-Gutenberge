@@ -1,0 +1,158 @@
+[
+  {
+    "blockName": "core/heading",
+    "attrs": {
+      "level": 1,
+      "style": "color: #333; font-family: 'Georgia', serif;",
+      "className": "main-title",
+      "content": "Welcome to My Blog"
+    },
+    "innerHTML": "Welcome to My Blog",
+    "innerContent": [
+      "Welcome to My Blog"
+    ]
+  },
+  {
+    "blockName": "core/paragraph",
+    "attrs": {
+      "style": "font-size: 18px; line-height: 1.6; color: #666;",
+      "className": "intro-paragraph",
+      "content": "This is an <strong>introduction paragraph</strong> with some <em>emphasized text</em> and a \n        <a href=\"https://example.com\" style=\"color: #007cba; text-decoration: none;\">styled link</a>."
+    },
+    "innerHTML": "This is an <strong>introduction paragraph</strong> with some <em>emphasized text</em> and a \n        <a href=\"https://example.com\" style=\"color: #007cba; text-decoration: none;\">styled link</a>.",
+    "innerContent": [
+      "This is an <strong>introduction paragraph</strong> with some <em>emphasized text</em> and a \n        <a href=\"https://example.com\" style=\"color: #007cba; text-decoration: none;\">styled link</a>."
+    ]
+  },
+  {
+    "blockName": "core/heading",
+    "attrs": {
+      "level": 2,
+      "style": "border-bottom: 2px solid #007cba; padding-bottom: 10px;",
+      "className": "section-heading",
+      "content": "Features and Benefits"
+    },
+    "innerHTML": "Features and Benefits",
+    "innerContent": [
+      "Features and Benefits"
+    ]
+  },
+  {
+    "blockName": "core/paragraph",
+    "attrs": {
+      "style": "margin: 20px 0;",
+      "content": "Here are some key points to consider:"
+    },
+    "innerHTML": "Here are some key points to consider:",
+    "innerContent": [
+      "Here are some key points to consider:"
+    ]
+  },
+  {
+    "blockName": "core/list",
+    "attrs": {
+      "ordered": false,
+      "values": [
+        "\n            <strong>Style Preservation:</strong> All inline styles and CSS classes are maintained\n        ",
+        "\n            <em>Nested formatting</em> works perfectly with <a href=\"#\" style=\"color: #d63638;\">colored links</a>\n        ",
+        "Complex HTML structures are converted appropriately"
+      ],
+      "style": "list-style-type: disc; padding-left: 30px;",
+      "className": "feature-list"
+    },
+    "innerHTML": "\n        <li style=\"margin-bottom: 10px;\">\n            <strong>Style Preservation:</strong> All inline styles and CSS classes are maintained\n        </li>\n        <li style=\"margin-bottom: 10px;\">\n            <em>Nested formatting</em> works perfectly with <a href=\"#\" style=\"color: #d63638;\">colored links</a>\n        </li>\n        <li style=\"margin-bottom: 10px;\">Complex HTML structures are converted appropriately</li>\n    ",
+    "innerContent": [
+      "\n        <li style=\"margin-bottom: 10px;\">\n            <strong>Style Preservation:</strong> All inline styles and CSS classes are maintained\n        </li>\n        <li style=\"margin-bottom: 10px;\">\n            <em>Nested formatting</em> works perfectly with <a href=\"#\" style=\"color: #d63638;\">colored links</a>\n        </li>\n        <li style=\"margin-bottom: 10px;\">Complex HTML structures are converted appropriately</li>\n    "
+    ]
+  },
+  {
+    "blockName": "core/heading",
+    "attrs": {
+      "level": 3,
+      "style": "color: #d63638; margin-top: 30px;",
+      "content": "Image Example"
+    },
+    "innerHTML": "Image Example",
+    "innerContent": [
+      "Image Example"
+    ]
+  },
+  {
+    "blockName": "core/image",
+    "attrs": {
+      "url": "https://via.placeholder.com/600x300/007cba/ffffff?text=Sample+Image",
+      "alt": "Sample placeholder image",
+      "width": 600,
+      "height": 300,
+      "style": "border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 100%;",
+      "className": "featured-image"
+    },
+    "innerHTML": "<img src=\"https://via.placeholder.com/600x300/007cba/ffffff?text=Sample+Image\" alt=\"Sample placeholder image\" class=\"featured-image\" style=\"border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 100%;\" width=\"600\" height=\"300\">",
+    "innerContent": [
+      "<img src=\"https://via.placeholder.com/600x300/007cba/ffffff?text=Sample+Image\" alt=\"Sample placeholder image\" class=\"featured-image\" style=\"border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 100%;\" width=\"600\" height=\"300\">"
+    ]
+  },
+  {
+    "blockName": "core/paragraph",
+    "attrs": {
+      "style": "font-style: italic; font-size: 14px; color: #888; margin-top: 10px;",
+      "className": "caption",
+      "content": "This image demonstrates how attributes like width, height, alt text, and styling are preserved."
+    },
+    "innerHTML": "This image demonstrates how attributes like width, height, alt text, and styling are preserved.",
+    "innerContent": [
+      "This image demonstrates how attributes like width, height, alt text, and styling are preserved."
+    ]
+  },
+  {
+    "blockName": "core/heading",
+    "attrs": {
+      "level": 3,
+      "style": "color: #007cba;",
+      "content": "Ordered List Example"
+    },
+    "innerHTML": "Ordered List Example",
+    "innerContent": [
+      "Ordered List Example"
+    ]
+  },
+  {
+    "blockName": "core/list",
+    "attrs": {
+      "ordered": true,
+      "values": [
+        "\n            First step with custom styling\n        ",
+        "\n            Second step with <strong style=\"color: #d63638;\">important information</strong>\n        ",
+        "\n            Final step to complete the process\n        "
+      ],
+      "style": "counter-reset: item; padding-left: 0;",
+      "className": "numbered-list"
+    },
+    "innerHTML": "\n        <li style=\"display: block; margin-bottom: 0.5em; padding-left: 40px; position: relative;\">\n            First step with custom styling\n        </li>\n        <li style=\"display: block; margin-bottom: 0.5em; padding-left: 40px; position: relative;\">\n            Second step with <strong style=\"color: #d63638;\">important information</strong>\n        </li>\n        <li style=\"display: block; margin-bottom: 0.5em; padding-left: 40px; position: relative;\">\n            Final step to complete the process\n        </li>\n    ",
+    "innerContent": [
+      "\n        <li style=\"display: block; margin-bottom: 0.5em; padding-left: 40px; position: relative;\">\n            First step with custom styling\n        </li>\n        <li style=\"display: block; margin-bottom: 0.5em; padding-left: 40px; position: relative;\">\n            Second step with <strong style=\"color: #d63638;\">important information</strong>\n        </li>\n        <li style=\"display: block; margin-bottom: 0.5em; padding-left: 40px; position: relative;\">\n            Final step to complete the process\n        </li>\n    "
+    ]
+  },
+  {
+    "blockName": "core/html",
+    "attrs": {
+      "content": "<div class=\"highlight-box\" style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; margin: 30px 0;\"><h4 style=\"margin-top: 0; color: #fff;\">Special Notice</h4><p style=\"margin-bottom: 0;\">This content is inside a div with complex styling. It will be converted to an HTML block \n            to preserve all the visual formatting and gradient background.</p></div>"
+    },
+    "innerHTML": "<div class=\"highlight-box\" style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; margin: 30px 0;\"><h4 style=\"margin-top: 0; color: #fff;\">Special Notice</h4><p style=\"margin-bottom: 0;\">This content is inside a div with complex styling. It will be converted to an HTML block \n            to preserve all the visual formatting and gradient background.</p></div>",
+    "innerContent": [
+      "<div class=\"highlight-box\" style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; margin: 30px 0;\"><h4 style=\"margin-top: 0; color: #fff;\">Special Notice</h4><p style=\"margin-bottom: 0;\">This content is inside a div with complex styling. It will be converted to an HTML block \n            to preserve all the visual formatting and gradient background.</p></div>"
+    ]
+  },
+  {
+    "blockName": "core/paragraph",
+    "attrs": {
+      "style": "font-size: 16px; text-align: center; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #007cba;",
+      "className": "closing",
+      "content": "Thank you for testing the HTML to Gutenberg converter! 🚀"
+    },
+    "innerHTML": "Thank you for testing the HTML to Gutenberg converter! 🚀",
+    "innerContent": [
+      "Thank you for testing the HTML to Gutenberg converter! 🚀"
+    ]
+  }
+]
